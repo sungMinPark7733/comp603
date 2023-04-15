@@ -8,7 +8,7 @@ package animalfarm;
  *
  * @author park6
  */
-abstract class Building {
+    abstract class Building {
 
     private boolean owned;
     protected int buildingCost;
