@@ -37,7 +37,7 @@ public class AnimalApplication {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Please enter a valid input\n");
-                scanner.next(); // Clear invalid input from buffer
+                scanner.next();   
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Please enter a valid input\n");
             }
@@ -78,7 +78,7 @@ public class AnimalApplication {
             }
         } catch (InputMismatchException e) {
             System.out.println("Please enter a valid input\n");
-            scanner.next(); // Clear invalid input from buffer
+            scanner.next();   
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Please enter a valid input\n");
         }
@@ -128,7 +128,7 @@ public class AnimalApplication {
             }
         } catch (InputMismatchException e) {
             System.out.println("Please enter a valid input\n");
-            scanner.next(); // Clear invalid input from buffer
+            scanner.next();   
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Please enter a valid input\n");
         }

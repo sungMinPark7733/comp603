@@ -128,7 +128,7 @@ public class AnimalList {
             }
         } catch (InputMismatchException e) {
             System.out.println("Please enter a valid input\n");
-            scanner.next(); // Clear invalid input from buffer
+            scanner.next();   
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Please enter a valid input\n");
         }
@@ -164,7 +164,7 @@ public class AnimalList {
             }
         } catch (InputMismatchException e) {
             System.out.println("Please enter a valid input\n");
-            scanner.next(); // Clear invalid input from buffer
+            scanner.next();   
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Please enter a valid input\n");
         }
@@ -212,7 +212,7 @@ public class AnimalList {
             }
         } catch (InputMismatchException e) {
             System.out.println("Please enter a valid input\n");
-            scanner.next(); // Clear invalid input from buffer
+            scanner.next();   
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Please enter a valid input\n");
         }
@@ -283,7 +283,7 @@ public class AnimalList {
             }
         } catch (InputMismatchException e) {
             System.out.println("Please enter a valid input\n");
-            scanner.next(); // Clear invalid input from buffer
+            scanner.next();   
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Please enter a valid input\n");
         }
@@ -297,7 +297,6 @@ public class AnimalList {
         System.out.println(stable.toString());
     }
 //This method saves the current state of the AnimalList object to a file. It uses a FileWriter and PrintWriter to write the data to a file in a formatted manner.
-
     public void saveGame() {
         try (PrintWriter writer = new PrintWriter(new FileWriter("src/animalfarm/savedFile.txt"))) {
             writer.println("Coin number:" + coin);
