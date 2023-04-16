@@ -49,80 +49,88 @@ public class AnimalList {
 //It also checks if the player owns the required building (e.g., pigsty, sheepPen) before allowing the purchase of certain animals.
 
     public void buyAnimal() {
-        System.out.println("Please choose which animal to buy:\n"
-                + "1. New chicken: 1 coins\n"
-                + "2. New Pig: 2 coins\n"
-                + "3. New Sheep: 2 coins\n"
-                + "4. New cattle: 3 coins\n"
-                + "5. New horse: 3 coins\n"
-                + "6. Cancel\n");
-        int choice = scanner.nextInt();
+        try {
+            System.out.println("Please choose which animal to buy:\n"
+                    + "1. New chicken: 1 coins\n"
+                    + "2. New Pig: 2 coins\n"
+                    + "3. New Sheep: 2 coins\n"
+                    + "4. New cattle: 3 coins\n"
+                    + "5. New horse: 3 coins\n"
+                    + "6. Cancel\n");
+            int choice = scanner.nextInt();
 
-        switch (choice) {
-            case 1:
-                Animal chicken = new chicken(null);
-                if (chicken.cost > coin) {
-                    System.out.println("You don't have enough coins to buy this animal.\n");
-                } else {
-                    coin -= chicken.cost;
-                    System.out.println("You bought an animal! Your remaining coins:\n " + coin + "\n");
-                    animals.add(chicken);
-                }
-                break;
-            case 2:
-                Animal pig = new pig(null);
-                if (pig.cost > coin) {
-                    System.out.println("You don't have enough coins to buy this animal\n");
-                } else if (pigsty.isOwned() == false) {
-                    System.out.println("You don't own pigsty! Build pigsty first to buy pig!");
-                } else {
-                    coin -= pig.cost;
-                    System.out.println("You bought an animal! Your remaining coins:\n " + coin + "\n");
-                    animals.add(pig);
-                }
-                break;
-            case 3:
-                Animal sheep = new sheep(null);
-                if (sheep.cost > coin) {
-                    System.out.println("You don't have enough coins to buy this animal\n");
-                } else if (sheepPen.isOwned() == false) {
-                    System.out.println("You don't own sheepPen! Build sheepPen first to buy sheep!");
-                } else {
-                    coin -= sheep.cost;
-                    System.out.println("You bought an animal! Your remaining coins:\n " + coin + "\n");
-                    animals.add(sheep);
-                }
-                break;
-            case 4:
-                Animal cattle = new cattle(null);
-                if (cattle.cost > coin) {
-                    System.out.println("You don't have enough coins to buy this animal\n");
-                } else if (cattleShed.isOwned() == false) {
-                    System.out.println("You don't own cattleShed! Build cattleShed first to buy cattle!");
-                } else {
-                    coin -= cattle.cost;
-                    System.out.println("You bought an animal! Your remaining coins:\n " + coin + "\n");
-                    animals.add(cattle);
-                }
-                break;
-            case 5:
-                Animal horse = new horse(null);
-                if (horse.cost > coin) {
-                    System.out.println("You don't have enough coins to buy this animal\n");
-                } else if (stable.isOwned() == false) {
-                    System.out.println("You don't own stable! Build stable first to buy horse!");
-                } else {
-                    coin -= horse.cost;
-                    System.out.println("You bought an animal! Your remaining coins:\n " + coin + "\n");
-                    animals.add(horse);
-                }
-                break;
-            case 6:
-                break;
+            switch (choice) {
+                case 1:
+                    Animal chicken = new chicken(null);
+                    if (chicken.cost > coin) {
+                        System.out.println("You don't have enough coins to buy this animal.\n");
+                    } else {
+                        coin -= chicken.cost;
+                        System.out.println("You bought an animal! Your remaining coins:\n " + coin + "\n");
+                        animals.add(chicken);
+                    }
+                    break;
+                case 2:
+                    Animal pig = new pig(null);
+                    if (pig.cost > coin) {
+                        System.out.println("You don't have enough coins to buy this animal\n");
+                    } else if (pigsty.isOwned() == false) {
+                        System.out.println("You don't own pigsty! Build pigsty first to buy pig!");
+                    } else {
+                        coin -= pig.cost;
+                        System.out.println("You bought an animal! Your remaining coins:\n " + coin + "\n");
+                        animals.add(pig);
+                    }
+                    break;
+                case 3:
+                    Animal sheep = new sheep(null);
+                    if (sheep.cost > coin) {
+                        System.out.println("You don't have enough coins to buy this animal\n");
+                    } else if (sheepPen.isOwned() == false) {
+                        System.out.println("You don't own sheepPen! Build sheepPen first to buy sheep!");
+                    } else {
+                        coin -= sheep.cost;
+                        System.out.println("You bought an animal! Your remaining coins:\n " + coin + "\n");
+                        animals.add(sheep);
+                    }
+                    break;
+                case 4:
+                    Animal cattle = new cattle(null);
+                    if (cattle.cost > coin) {
+                        System.out.println("You don't have enough coins to buy this animal\n");
+                    } else if (cattleShed.isOwned() == false) {
+                        System.out.println("You don't own cattleShed! Build cattleShed first to buy cattle!");
+                    } else {
+                        coin -= cattle.cost;
+                        System.out.println("You bought an animal! Your remaining coins:\n " + coin + "\n");
+                        animals.add(cattle);
+                    }
+                    break;
+                case 5:
+                    Animal horse = new horse(null);
+                    if (horse.cost > coin) {
+                        System.out.println("You don't have enough coins to buy this animal\n");
+                    } else if (stable.isOwned() == false) {
+                        System.out.println("You don't own stable! Build stable first to buy horse!");
+                    } else {
+                        coin -= horse.cost;
+                        System.out.println("You bought an animal! Your remaining coins:\n " + coin + "\n");
+                        animals.add(horse);
+                    }
+                    break;
+                case 6:
+                    System.out.println("Cancelled");
+                    break;
 
-            default:
-                System.out.println("Please enter valid number\n");
-                break;
+                default:
+                    System.out.println("Please enter valid number\n");
+                    break;
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Please enter a valid input\n");
+            scanner.next(); // Clear invalid input from buffer
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Please enter a valid input\n");
         }
     }
 //This method allows the player to feed an animal from their list of owned animals. It displays the list of animals and prompts the player to choose an animal to feed. If the chosen animal is not already at full status, it calls the feed() method on the animal object, updating its status.
@@ -131,16 +139,16 @@ public class AnimalList {
         try {
             int count = animals.size();
             if (animals.isEmpty()) {
-                System.out.println("There is no animals.\n");
+                System.out.println("There are no animals.\n");
             } else {
                 System.out.println("Choose an animal to feed:");
                 for (int i = 0; i < count; i++) {
                     System.out.println((i + 1) + ". " + animals.get(i));
                 }
-                System.out.println(animals.size() + 1 + ". Cancel");
+                System.out.println((animals.size() + 1) + ". Cancel");
 
                 int choice = scanner.nextInt();
-                if (choice - 1 <= animals.size()) {
+                if (choice <= animals.size()) {
                     Animal selectedAnimal = animals.get(choice - 1);
                     if (selectedAnimal.status.equalsIgnoreCase("Full")) {
                         System.out.println("This animal is already full!\n");
@@ -148,16 +156,22 @@ public class AnimalList {
                         selectedAnimal.feed();
                         System.out.println("You fed the " + selectedAnimal.getClass().getSimpleName() + "!\n");
                     }
+                } else if (choice == animals.size() + 1) {
+                    System.out.println("Cancelled\n"); // Print "Cancelled" for cancel option
                 } else {
                     System.out.println("Please enter a valid number.\n");
                 }
             }
-        } catch (IndexOutOfBoundsException | InputMismatchException e) {
-
+        } catch (InputMismatchException e) {
+            System.out.println("Please enter a valid input\n");
+            scanner.next(); // Clear invalid input from buffer
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Please enter a valid input\n");
         }
     }
-//This method allows the player to sell an animal from their list of owned animals. It displays the list of animals and prompts the player to choose an animal to sell. It then removes the chosen animal from the list of owned animals and adds the animal's value to the player's coins.
 
+//This method allows the player to sell an animal from their list of owned animals. It displays the list of animals and prompts the player to choose an animal to sell. 
+//It then removes the chosen animal from the list of owned animals and adds the animal's value to the player's coins.
     public void sellAnimal() {
         try {
             int count = animals.size();
@@ -173,7 +187,7 @@ public class AnimalList {
                 int choice = scanner.nextInt();
 
                 if (choice == (count + 1)) {
-                    System.out.println();
+                    System.out.println("Cancelled\n"); // Print "Cancelled" for cancel option
                 } else {
                     Animal selectedAnimal = animals.get(choice - 1);
 
@@ -196,70 +210,82 @@ public class AnimalList {
                     }
                 }
             }
-        } catch (IndexOutOfBoundsException | InputMismatchException e) {
+        } catch (InputMismatchException e) {
+            System.out.println("Please enter a valid input\n");
+            scanner.next(); // Clear invalid input from buffer
+        } catch (IndexOutOfBoundsException e) {
             System.out.println("Please enter a valid input\n");
         }
     }
 
     //This method allows the player to build a new building based on their choice. It deducts the cost of the building from the player's coins and sets the corresponding building object as owned.
     public void buyBuildings() {
-        System.out.println("Choose which building to buy:\n"
-                + "1. Pigsty: 10 coins\n"
-                + "2. Sheep pen: 10 coins\n"
-                + "3. Cattle shed: 20 coins\n"
-                + "4. Stable: 20 coins\n"
-                + "5. Cancel\n"
-        );
-        int choice = scanner.nextInt();
-        switch (choice) {
-            case 1:
-                if (pigsty.buildingCost > coin) {
-                    System.out.println("You don't have enough coins to construct this building\n");
-                } else if (pigsty.isOwned() == true) {
-                    System.out.println("You already own a pigsty!");
-                } else {
-                    coin -= pigsty.buildingCost;
-                    System.out.println("You constructed a pigsty! Now you can buy pig! Your remaining coins:\n " + coin + "\n");
-                    pigsty.purchsed();
-                }
-                break;
-            case 2:
-                if (sheepPen.buildingCost > coin) {
-                    System.out.println("You don't have enough coins to construct this building\n");
-                } else if (sheepPen.isOwned() == true) {
-                    System.out.println("You already own a sheepPen!");
-                } else {
-                    coin -= sheepPen.buildingCost;
-                    System.out.println("You constructed a sheepPen! Now you can buy sheep! Your remaining coins:\n " + coin + "\n");
-                    sheepPen.purchsed();
-                }
-                break;
-            case 3:
-                if (cattleShed.buildingCost > coin) {
-                    System.out.println("You don't have enough coins to construct this building\n");
-                } else if (cattleShed.isOwned() == true) {
-                    System.out.println("You already own a cattleShed!");
-                } else {
-                    coin -= cattleShed.buildingCost;
-                    System.out.println("You constructed a cattleShed! Now you can buy cattle! Your remaining coins:\n " + coin + "\n");
-                    cattleShed.purchsed();
-                }
-                break;
-            case 4:
-                if (stable.buildingCost > coin) {
-                    System.out.println("You don't have enough coins to construct this building\n");
-                } else if (stable.isOwned() == true) {
-                    System.out.println("You already own a stable!");
-                } else {
-                    coin -= stable.buildingCost;
-                    System.out.println("You constructed a stable! Now you can buy horse! Your remaining coins:\n " + coin + "\n");
-                    stable.purchsed();
-                }
-                break;
-            case 5:
-                break;
-            default:
-                System.out.println("Please enter a valid input\n");
+        try {
+            System.out.println("Choose which building to buy:\n"
+                    + "1. Pigsty: 10 coins\n"
+                    + "2. Sheep pen: 10 coins\n"
+                    + "3. Cattle shed: 20 coins\n"
+                    + "4. Stable: 20 coins\n"
+                    + "5. Cancel\n"
+            );
+            int choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    if (pigsty.buildingCost > coin) {
+                        System.out.println("You don't have enough coins to construct this building\n");
+                    } else if (pigsty.isOwned() == true) {
+                        System.out.println("You already own a pigsty!");
+                    } else {
+                        coin -= pigsty.buildingCost;
+                        System.out.println("You constructed a pigsty! Now you can buy pig! Your remaining coins:\n " + coin + "\n");
+                        pigsty.purchsed();
+                    }
+                    break;
+                case 2:
+                    if (sheepPen.buildingCost > coin) {
+                        System.out.println("You don't have enough coins to construct this building\n");
+                    } else if (sheepPen.isOwned() == true) {
+                        System.out.println("You already own a sheepPen!");
+                    } else {
+                        coin -= sheepPen.buildingCost;
+                        System.out.println("You constructed a sheepPen! Now you can buy sheep! Your remaining coins:\n " + coin + "\n");
+                        sheepPen.purchsed();
+                    }
+                    break;
+                case 3:
+                    if (cattleShed.buildingCost > coin) {
+                        System.out.println("You don't have enough coins to construct this building\n");
+                    } else if (cattleShed.isOwned() == true) {
+                        System.out.println("You already own a cattleShed!");
+                    } else {
+                        coin -= cattleShed.buildingCost;
+                        System.out.println("You constructed a cattleShed! Now you can buy cattle! Your remaining coins:\n " + coin + "\n");
+                        cattleShed.purchsed();
+                    }
+                    break;
+                case 4:
+                    if (stable.buildingCost > coin) {
+                        System.out.println("You don't have enough coins to construct this building\n");
+                    } else if (stable.isOwned() == true) {
+                        System.out.println("You already own a stable!");
+                    } else {
+                        coin -= stable.buildingCost;
+                        System.out.println("You constructed a stable! Now you can buy horse! Your remaining coins:\n " + coin + "\n");
+                        stable.purchsed();
+                    }
+                    break;
+                case 5:
+                    System.out.println("Cancelled");
+
+                    break;
+                default:
+                    System.out.println("Please enter a valid input\n");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Please enter a valid input\n");
+            scanner.next(); // Clear invalid input from buffer
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Please enter a valid input\n");
         }
     }
 
@@ -273,14 +299,14 @@ public class AnimalList {
 //This method saves the current state of the AnimalList object to a file. It uses a FileWriter and PrintWriter to write the data to a file in a formatted manner.
 
     public void saveGame() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("C:\\Users\\park6\\Documents\\NetBeansProjects\\AnimalFarm\\src\\animalfarm\\savedFile.txt"))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("src/animalfarm/savedFile.txt"))) {
             writer.println("Coin number:" + coin);
             writer.println("Pigsty owned: " + pigsty.isOwned());
             writer.println("Sheep pen owned: " + sheepPen.isOwned());
             writer.println("Cattle shed owned: " + cattleShed.isOwned());
             writer.println("Stable owned: " + stable.isOwned());
             for (Animal animal : animals) {
-                writer.println(animal.getClass().getSimpleName() + " status: " + animal.getStatus("C:\\Users\\park6\\Documents\\NetBeansProjects\\AnimalFarm\\src\\animalfarm\\savedFile.txt"));
+                writer.println(animal.getClass().getSimpleName() + " status: " + animal.getStatus("src/animalfarm/savedFile.txt"));
             }
             System.out.println("Game saved successfully.\n");
         } catch (IOException e) {
@@ -291,11 +317,11 @@ public class AnimalList {
 
     public void loadGame() {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\park6\\Documents\\NetBeansProjects\\AnimalFarm\\src\\animalfarm\\savedFile.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("src/animalfarm/savedFile.txt"));
             String line = reader.readLine();
             while (line != null) {
                 if (line.startsWith("Coin number:")) {
-                    String[] parts = line.split("Coin number: ");
+                    String[] parts = line.split("Coin number:");
                     int newCoin = Integer.parseInt(parts[1]);
                     coin = newCoin;
                 }
@@ -357,7 +383,7 @@ public class AnimalList {
 
     public void loadInstruction() {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\park6\\Documents\\NetBeansProjects\\AnimalFarm\\src\\animalfarm\\instruction"));
+            BufferedReader reader = new BufferedReader(new FileReader("src/animalfarm/instruction.txt"));
             String line = reader.readLine();
             while (line != null) {
                 System.out.println(line);
