@@ -13,9 +13,9 @@ abstract class Animal {
     String status;
     protected int cost;
 
-    public Animal(String status) {
-        this.status = "hungry";
-        this.cost = 0;
+    public Animal() {
+        status = "hungry";
+        cost = 0;
     }
 
     @Override

@@ -1,12 +1,6 @@
-Coin number:45
-Pigsty owned: true
-Sheep pen owned: true
-Cattle shed owned: true
+Coin number:9
+Pigsty owned: false
+Sheep pen owned: false
+Cattle shed owned: false
 Stable owned: false
-pig status: full
-sheep status: hungry
-pig status: hungry
 chicken status: hungry
-sheep status: hungry
-pig status: hungry
-cattle status: hungry

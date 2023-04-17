@@ -10,8 +10,8 @@ package animalfarm;
  */
 public class cattle extends Animal {
 
-    public cattle(String status) {
-        super(status);
+    public cattle() {
+        status = "hungry";
         cost = 3;
     }
 

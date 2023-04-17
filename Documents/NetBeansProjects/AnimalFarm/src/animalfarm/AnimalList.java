@@ -16,16 +16,22 @@ import java.util.Scanner;
  */
 public class AnimalList {
 
-    private ArrayList<Animal> animals;
-    private int coin = 1;
+    public ArrayList<Animal> animals;
+    public int coin;
     Scanner scanner = new Scanner(System.in);
-    Building pigsty = new pigsty(false);
-    Building sheepPen = new sheepPen(false);
-    Building cattleShed = new cattleShed(false);
-    Building stable = new stable(false);
-
+    public Building pigsty = new pigsty();
+    public Building sheepPen = new sheepPen();
+    public Building cattleShed = new cattleShed();
+    public Building stable = new stable();
+    public Animal chicken = new chicken();
+    public Animal pig = new pig();
+    public Animal sheep = new sheep();
+    public Animal cattle = new cattle();
+    public Animal horse = new horse();
+    
     public AnimalList() {
-        this.animals = new ArrayList<>();
+        animals = new ArrayList<>();
+        coin = 10;
     }
 //This method displays the current number of coins the player has
 
@@ -61,7 +67,7 @@ public class AnimalList {
 
             switch (choice) {
                 case 1:
-                    Animal chicken = new chicken(null);
+                    Animal chicken = new chicken();
                     if (chicken.cost > coin) {
                         System.out.println("You don't have enough coins to buy this animal.\n");
                     } else {
@@ -71,7 +77,7 @@ public class AnimalList {
                     }
                     break;
                 case 2:
-                    Animal pig = new pig(null);
+                    Animal pig = new pig();
                     if (pig.cost > coin) {
                         System.out.println("You don't have enough coins to buy this animal\n");
                     } else if (pigsty.isOwned() == false) {
@@ -83,7 +89,7 @@ public class AnimalList {
                     }
                     break;
                 case 3:
-                    Animal sheep = new sheep(null);
+                    Animal sheep = new sheep();
                     if (sheep.cost > coin) {
                         System.out.println("You don't have enough coins to buy this animal\n");
                     } else if (sheepPen.isOwned() == false) {
@@ -95,7 +101,7 @@ public class AnimalList {
                     }
                     break;
                 case 4:
-                    Animal cattle = new cattle(null);
+                    Animal cattle = new cattle();
                     if (cattle.cost > coin) {
                         System.out.println("You don't have enough coins to buy this animal\n");
                     } else if (cattleShed.isOwned() == false) {
@@ -107,7 +113,7 @@ public class AnimalList {
                     }
                     break;
                 case 5:
-                    Animal horse = new horse(null);
+                    Animal horse = new horse();
                     if (horse.cost > coin) {
                         System.out.println("You don't have enough coins to buy this animal\n");
                     } else if (stable.isOwned() == false) {
@@ -365,15 +371,15 @@ public class AnimalList {
     private Animal createAnimal(String animalType) {
         switch (animalType) {
             case "chicken":
-                return new chicken(null);
+                return new chicken();
             case "pig":
-                return new pig(null);
+                return new pig();
             case "sheep":
-                return new sheep(null);
+                return new sheep();
             case "cattle":
-                return new cattle(null);
+                return new cattle();
             case "horse":
-                return new horse(null);
+                return new horse();
             default:
                 System.out.println("Unknown animal type: " + animalType);
                 return null;

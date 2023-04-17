@@ -10,13 +10,13 @@ package animalfarm;
  */
     abstract class Building {
 
-    private boolean owned;
+    public boolean owned;
     protected int buildingCost;
     private String check;
 
-    public Building(boolean owned) {
-        this.owned = false;
-        this.buildingCost = 0;
+    public Building() {
+        owned = false;
+        buildingCost = 0;
     }
 
     @Override

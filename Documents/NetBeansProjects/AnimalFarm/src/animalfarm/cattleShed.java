@@ -10,8 +10,8 @@ package animalfarm;
  */
 public class cattleShed extends Building {
 
-    public cattleShed(boolean owned) {
-        super(owned);
+    public cattleShed() {
+        owned = false;
         buildingCost = 20;
     }
 

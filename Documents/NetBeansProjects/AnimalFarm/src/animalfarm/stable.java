@@ -10,8 +10,8 @@ package animalfarm;
  */
 public class stable extends Building {
 
-    public stable(boolean owned) {
-        super(owned);
+    public stable() {
+        owned = false;
         buildingCost = 20;
     }
 
