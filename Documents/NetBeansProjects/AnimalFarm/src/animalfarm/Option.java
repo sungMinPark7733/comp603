@@ -1,4 +1,3 @@
-
 package animalfarm;
 
 import java.util.InputMismatchException;
@@ -8,10 +7,12 @@ public class Option extends AnimalList {
 
     Scanner scanner = new Scanner(System.in);
 
+    //This method displays the current number of coins
     public void showCoin() {
         System.out.println("You have " + coin + " coin");
     }
 
+//This method displays the list of animals the player has along with their status
     public void showAnimal() {
         if (animals.isEmpty()) {
             System.out.println("There is no animals");
@@ -22,6 +23,10 @@ public class Option extends AnimalList {
             }
         }
     }
+
+//This method allows the player to buy a new animal. 
+//It deducts the cost of the animal from the player's coins and adds the animal to the list of owned animals. 
+//It also checks if the player owns the required building (e.g., pigsty, sheepPen) before allowing the purchase of certain animals.
     public void buyAnimal() {
         try {
             System.out.println("Please choose which animal to buy:\n"
@@ -107,6 +112,9 @@ public class Option extends AnimalList {
             System.out.println("Please enter a valid input\n");
         }
     }
+
+//    This method allows the player to feed an animal from their list of owned animals. It displays the list of animals and prompts the player to choose an animal to feed. 
+//    If the chosen animal's status is not full, it calls the feed() method on the animal object, updating its status.
     public void feedAnimal() {
         try {
             int count = animals.size();
@@ -142,6 +150,8 @@ public class Option extends AnimalList {
         }
     }
 
+//  This method allows the player to sell an animal from their list of owned animals. It displays the list of animals and prompts the player to choose an animal to sell. 
+//  It then removes the chosen animal from the list of owned animals and adds the animal's value to the player's coins.
     public void sellAnimal() {
         try {
             int count = animals.size();
@@ -187,6 +197,8 @@ public class Option extends AnimalList {
         }
     }
 
+//  This method allows the player to build a new building based on their choice. 
+//  It deducts the cost of the building from the player's coins and sets the corresponding building object as owned.
     public void buyBuildings() {
         try {
             System.out.println("Choose which building to buy:\n"
@@ -244,8 +256,8 @@ public class Option extends AnimalList {
                     break;
                 case 5:
                     System.out.println("Cancelled");
-
                     break;
+
                 default:
                     System.out.println("Please enter a valid input\n");
             }
@@ -256,6 +268,8 @@ public class Option extends AnimalList {
             System.out.println("Please enter a valid input\n");
         }
     }
+
+//  This method displays the list of buildings the player owns
     public void showBuilding() {
         System.out.println(pigsty.toString());
         System.out.println(sheepPen.toString());

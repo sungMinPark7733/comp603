@@ -1,0 +1,10 @@
+Welcome to Animal farm! 
+You start the game with 10 coins
+You can buy or sell animals and upgrade your farm with coin
+Construct buildings such as pigsty and stable to unlock more animals
+
+Feed animals and make them full before you sell them!
+Full animals can be sold for double the price you bought
+Hungry animals cannot be sold
+
+Hope you have fun:)

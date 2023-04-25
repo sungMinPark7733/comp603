@@ -1,7 +1,6 @@
-Coin number:16
-Pigsty owned: false
+Coin number:0
+Pigsty owned: true
 Sheep pen owned: false
 Cattle shed owned: false
 Stable owned: false
-chicken status: hungry
-chicken status: hungry
+pig status: hungry

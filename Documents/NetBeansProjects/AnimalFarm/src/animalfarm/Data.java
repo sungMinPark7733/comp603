@@ -9,7 +9,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Data extends AnimalList{
-       
+    
+//  This method saves the current state of the AnimalList object to a file. 
+//    It uses a FileWriter and PrintWriter to write the data to a file.
     public void saveGame(String filepath) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filepath))) {
             writer.println("Coin number:" + coin);
@@ -25,7 +27,9 @@ public class Data extends AnimalList{
             System.out.println("Error saving the game.\n");
         }
     }
- 
+    
+ //    This method loads the AnimalList object from a file. 
+//    It uses a FileReader and BufferedReader to read the data from the file and populate the AnimalList object with the data.
     public void loadGame(String filepath) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(filepath));
