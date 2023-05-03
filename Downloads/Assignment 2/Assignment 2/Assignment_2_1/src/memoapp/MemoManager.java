@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package memoapp;
 
 import java.text.DateFormat;
@@ -7,44 +12,38 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MemoManager<E, F extends Comparable> {
-
-    BinaryTree bTreeDate;
-    BinaryTree bTreeTitle;
-
-    public void addMemo(String date, String title, String message) {
-        Memo memo = new Memo(date, title, message);
-        addToTree(memo, (E) memo.getDate()); // add to bTreeDate using date as key
-        addToTree(memo, (E) memo.getTitle()); // add to bTreeTitle using title as key
+/**
+ *
+ * @author xhu
+ */
+public class MemoManager<E extends Comparable> {
+    
+    
+    
+    
+    public void addMemo(String date, String title, String message)
+    {
+        
     }
-
-    @SuppressWarnings("unchecked")
-    public void addToTree(Memo memo, E key) {
-        if (key instanceof Date) {
-            if (bTreeDate == null) {
-                bTreeDate = new BinaryTree<Date, Memo>();
-            }
-            bTreeDate.insert((Date) key, memo);
-        } else if (key instanceof String) {
-            if (bTreeTitle == null) {
-                bTreeTitle = new BinaryTree<String, Memo>();
-            }
-            bTreeTitle.insert((String) key, memo);
-        } else {
-            throw new IllegalArgumentException("Invalid key type: " + key.getClass());
-        }
+    
+    public void addToTree(Memo memo, E key)
+    {        
+               
     }
-
-    public Memo findMemo(E key) {
-
+    
+    public Memo findMemo(E key)
+    {
+         
     }
-
-    public Memo[] getSortedMemoList(E key) {
-
+    
+    public Memo[] getSortedMemoList(E key)
+    {
+        
     }
-
-    public void reverseOrder() {
-
+    
+    public void reverseOrder()
+    {
+        
     }
-
+    
 }

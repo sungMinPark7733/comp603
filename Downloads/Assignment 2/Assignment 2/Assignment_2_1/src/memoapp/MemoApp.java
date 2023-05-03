@@ -147,7 +147,7 @@ public class MemoApp {
         int mark = 0;
         for(int i = 0; i < list.length-1; i++)
         {
-            if(list[i].getDate().compareTo(list[i+1].getDate())<=0)
+            if(list[i].date.compareTo(list[i+1].date)<=0)
                 mark++;
         }
         
@@ -167,7 +167,7 @@ public class MemoApp {
         int mark = 0;
         for(int i = 0; i < list.length-1; i++)
         {
-            if(list[i].getTitle().compareTo(list[i+1].getTitle())<=0)
+            if(list[i].title.compareTo(list[i+1].title)<=0)
                 mark++;
         }
         
@@ -187,7 +187,7 @@ public class MemoApp {
         int mark = 0;
         for(int i = 0; i < list.length-1; i++)
         {
-            if(list[i].getDate().compareTo(list[i+1].getDate())>=0)
+            if(list[i].date.compareTo(list[i+1].date)>=0)
                 mark++;
         }
         
@@ -207,7 +207,7 @@ public class MemoApp {
         int mark = 0;
         for(int i = 0; i < list.length-1; i++)
         {
-            if(list[i].getTitle().compareTo(list[i+1].getTitle())>=0)
+            if(list[i].title.compareTo(list[i+1].title)>=0)
                 mark++;
         }
         
@@ -227,7 +227,7 @@ public class MemoApp {
         System.out.println(" Title 03");
         Memo resultMemo = memoManager.findMemo("Title 03");
         System.out.println(resultMemo);
-        if(resultMemo.getTitle().equals("Title 03"))
+        if(resultMemo.title.equals("Title 03"))
             return 3;
         else
         {
@@ -258,7 +258,7 @@ public class MemoApp {
             System.out.println(" "+targetDate);
             Memo resultMemo = memoManager.findMemo(targetDate);
             System.out.println(resultMemo);
-            if(resultMemo.getDate().equals(targetDate))
+            if(resultMemo.date.equals(targetDate))
                 return 3;
             else
             {
