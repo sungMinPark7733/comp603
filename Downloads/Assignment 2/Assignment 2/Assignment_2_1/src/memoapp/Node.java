@@ -8,25 +8,28 @@ public class Node<E, F extends Comparable> implements Comparable<Node> {
     Node right;
 
     public Node() {
-        this.element = null;
-        this.key = null;
-        this.left = null;
-        this.right = null;
+        element = null;
+        key = null;
+        left = null;
+        right = null;
     }
 
     public Node(E element) {
         this.element = element;
-        this.key = null;
-        this.left = null;
-        this.right = null;
+        key = null;
+        left = null;
+        right = null;
     }
-
-    public int compareTo(Node node) {
-        
+    
+    public Node(E element, F key) {
+        this.element = element;
+        this.key = key;
+        left = null;
+        right = null;
     }
-
+    
     @Override
     public int compareTo(Node t) {
-
+        return this.key.compareTo(t.key);
     }
 }
