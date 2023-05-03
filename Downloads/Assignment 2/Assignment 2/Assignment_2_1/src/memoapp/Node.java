@@ -1,19 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package memoapp;
 
-/**
- *
- * @author xhu
- */
-public class Node <E, F extends Comparable> implements Comparable <Node>{
-    
+public class Node<E, F extends Comparable> implements Comparable<Node> {
+
+    E element;
+    F key;
+    Node left;
+    Node right;
+
+    public Node() {
+        this.element = null;
+        this.key = null;
+        this.left = null;
+        this.right = null;
+    }
+
+    public Node(E element) {
+        this.element = element;
+        this.key = null;
+        this.left = null;
+        this.right = null;
+    }
+
+    public int compareTo(Node node) {
+        
+    }
 
     @Override
     public int compareTo(Node t) {
-        
+
     }
 }
