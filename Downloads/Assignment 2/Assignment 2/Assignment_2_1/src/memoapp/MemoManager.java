@@ -12,39 +12,51 @@ public class MemoManager<E, F extends Comparable> {
     BinaryTree bTreeDate;
     BinaryTree bTreeTitle;
 
-    public void addMemo(String date, String title, String message) {
-        Memo memo = new Memo(date, title, message);
-        addToTree(memo, (E) memo.getDate()); // add to bTreeDate using date as key
-        addToTree(memo, (E) memo.getTitle()); // add to bTreeTitle using title as key
+    public MemoManager() {
+        bTreeDate = new BinaryTree();
+        bTreeTitle = new BinaryTree();
     }
 
-    @SuppressWarnings("unchecked")
+    public Date stringToDate(String date) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            return formatter.parse(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(MemoManager.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public void addMemo(String date, String title, String message) {
+        Memo memo = new Memo(stringToDate(date), title, message);
+        addToTree(memo, (E) memo.getDate());
+        addToTree(memo, (E) memo.getTitle());
+    }
+
     public void addToTree(Memo memo, E key) {
         if (key instanceof Date) {
-            if (bTreeDate == null) {
-                bTreeDate = new BinaryTree<Date, Memo>();
-            }
-            bTreeDate.insert((Date) key, memo);
+            bTreeDate.addElement(memo, (Date) key);
         } else if (key instanceof String) {
-            if (bTreeTitle == null) {
-                bTreeTitle = new BinaryTree<String, Memo>();
-            }
-            bTreeTitle.insert((String) key, memo);
-        } else {
-            throw new IllegalArgumentException("Invalid key type: " + key.getClass());
+            bTreeTitle.addElement(memo, (String) key);
         }
     }
 
     public Memo findMemo(E key) {
-
+        if (key instanceof Date) {
+            return (Memo) bTreeDate.searchElement((Date) key);
+        } else if (key instanceof String) {
+            return (Memo) bTreeTitle.searchElement((String) key);
+        }
+        return null;
     }
 
     public Memo[] getSortedMemoList(E key) {
-
+        return null;
     }
 
     public void reverseOrder() {
-
+        bTreeDate.reverseOrder();
+        bTreeTitle.reverseOrder();
     }
 
 }
