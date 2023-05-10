@@ -1,5 +1,6 @@
 package memoapp;
 
+import java.util.Date;
 import java.util.Stack;
 
 public class BinaryTree<E, F extends Comparable> {
@@ -36,19 +37,19 @@ public class BinaryTree<E, F extends Comparable> {
             this.root = newNode;
             number_of_nodes++;
         }
-        if (newNode.key.compareTo(root.key) < 0) {
-            if (root.left == null) {
-                root.left = newNode;
+        if (newNode.getKey().compareTo(root.getKey()) < 0) {
+            if (root.getLeft() == null) {
+                root.setLeft(newNode);
                 number_of_nodes++;
             } else {
-                addNode(root.left, newNode);
+                addNode(root.getLeft(), newNode);
             }
         } else {
-            if (root.right == null) {
-                root.right = newNode;
+            if (root.getRight() == null) {
+                root.setRight(newNode);
                 number_of_nodes++;
             } else {
-                addNode(root.right, newNode);
+                addNode(root.getRight(), newNode);
             }
         }
     }
@@ -62,14 +63,14 @@ public class BinaryTree<E, F extends Comparable> {
             while (node != null || !stack.isEmpty()) {
                 while (node != null) {
                     stack.push(node);
-                    node = node.left;
+                    node = node.getLeft();
                 }
                 node = stack.pop();
 
                 // Display the details of the current node
-                System.out.println(node.element.toString() + " (Key: " + node.key.toString() + ")");
+                System.out.println(node.getElement().toString() + " (Key: " + node.getKey().toString() + ")");
 
-                node = node.right;
+                node = node.getRight();
             }
         }
     }
@@ -87,14 +88,14 @@ public class BinaryTree<E, F extends Comparable> {
     private void toSortedList(Node root) {
         if (root != null) {
             // Traverse the left subtree
-            toSortedList(root.left);
+            toSortedList(root.getLeft());
             int index = 0;
 
             // Add the current node to the nodeList array
             nodeList[number_of_nodes - (index++) - 1] = root;
 
             // Traverse the right subtree
-            toSortedList(root.right);
+            toSortedList(root.getRight());
         }
     }
 
@@ -103,7 +104,7 @@ public class BinaryTree<E, F extends Comparable> {
         Node resultNode = searchNode(root, targetNode);
 
         if (resultNode != null) {
-            return (E) resultNode.element;
+            return (E) resultNode.getElement();
         } else {
             return null;
         }
@@ -114,38 +115,31 @@ public class BinaryTree<E, F extends Comparable> {
         if (root == null || node == null) {
             return null;
         }
-        if (root.key.compareTo(node.key) == 0) {
+        if (root.getKey().compareTo(node.getKey()) == 0) {
             return root;
-        } else if (root.key.compareTo(node.key) > 0) {
-            return searchNode(root.left, node);
+        } else if (root.getKey().compareTo(node.getKey()) > 0) {
+            return searchNode(root.getLeft(), node);
         } else {
-            return searchNode(root.right, node);
+            return searchNode(root.getRight(), node);
         }
     }
 
+    // method to perform reverse-order traversal of the binary tree
     public void reverseOrder() {
-        traversal(root);
+        reverseOrder(root);
     }
 
-    private void reverseOrder(Node root) {
-        Stack<Node> stack = new Stack<>();
-        Node current = root;
-
-        // Traverse the tree in reverse order using an iterative approach
-        while (current != null || !stack.isEmpty()) {
-            // Traverse the right subtree
-            while (current != null) {
-                stack.push(current);
-                current = current.right;
-            }
-
-            // Visit the top node on the stack
-            current = stack.pop();
-            System.out.println(current.element.toString() + " (Key: " + current.key.toString() + ")");
-
-            // Traverse the left subtree
-            current = current.left;
+    // helper method for reverse-order traversal
+    private void reverseOrder(Node node) {
+        if (node != null) {
+            reverseOrder(node.getRight()); // visit right subtree
+            nodeList[number_of_nodes++] = node; // add node to nodeList
+            reverseOrder(node.getLeft()); // visit left subtree
         }
+    }
+
+    public void insert(Date date, Memo memo) {
+        
     }
 
 }
