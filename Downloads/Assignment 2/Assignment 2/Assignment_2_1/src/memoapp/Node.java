@@ -29,8 +29,8 @@ public class Node<E, F extends Comparable> implements Comparable<Node> {
     }
     
     @Override
-    public int compareTo(Node t) {
-        return this.getKey().compareTo(t.getKey());
+    public int compareTo(Node node) {
+        return this.getKey().compareTo(node.getKey());
     }
 
     /**
