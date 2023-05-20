@@ -17,54 +17,44 @@ public class MemoManager<E extends Comparable> {
         MemoManager<String> memoManager = new MemoManager<>();
 
         // Adding memos
-        memoManager.addMemo("2023/05/20", "Important Meeting", "Remember to prepare for the meeting.");
-        memoManager.addMemo("2023/05/19", "Buy Groceries", "Make a list of items to buy.");
+        memoManager.addMemo("2023/05/20", "Meeting", "Important meeting at 10 AM");
+        memoManager.addMemo("2023/05/21", "Shopping", "Buy groceries and household items");
 
-        // Testing findMemo method
-        System.out.println("Find Memo:");
-        Memo foundMemo = memoManager.findMemo("Important Meeting");
-        if (foundMemo != null) {
-            System.out.println("Memo Found:");
-            System.out.println("Date: " + foundMemo.getDate());
-            System.out.println("Title: " + foundMemo.getTitle());
-            System.out.println("Message: " + foundMemo.getMessage());
+        // Finding memos
+        Memo memo1 = memoManager.findMemo("Meeting");
+        if (memo1 != null) {
+            System.out.println("Found memo: " + memo1.getTitle());
+            System.out.println("Message: " + memo1.getMessage());
+            System.out.println("Date: " + memo1.getDate());
         } else {
-            System.out.println("Memo Not Found!");
+            System.out.println("Memo not found.");
         }
-        System.out.println();
 
-        // Testing getSortedMemoList method
-        System.out.println("Sorted Memo List:");
-        Memo[] sortedMemos = memoManager.getSortedMemoList("meeting");
+        Memo memo2 = memoManager.findMemo("2023/05/21");
+        if (memo2 != null) {
+            System.out.println("Found memo: " + memo2.getTitle());
+            System.out.println("Message: " + memo2.getMessage());
+            System.out.println("Date: " + memo2.getDate());
+        } else {
+            System.out.println("Memo not found.");
+        }
+
+        // Getting sorted memo list
+        Memo[] sortedMemos = memoManager.getSortedMemoList("2023/05/20");
         if (sortedMemos != null) {
+            System.out.println("Sorted memos:");
             for (Memo memo : sortedMemos) {
-                System.out.println("Date: " + memo.getDate());
                 System.out.println("Title: " + memo.getTitle());
                 System.out.println("Message: " + memo.getMessage());
-                System.out.println();
+                System.out.println("Date: " + memo.getDate());
+                System.out.println("-------------------------");
             }
         } else {
-            System.out.println("No Memos Found!");
+            System.out.println("No memos found.");
         }
-        System.out.println();
 
-        // Testing reverseOrder method
-        System.out.println("Reversed Order:");
+        // Reversing the order
         memoManager.reverseOrder();
-
-        // Testing getSortedMemoList method after reversing order
-        System.out.println("Sorted Memo List after Reversed Order:");
-        sortedMemos = memoManager.getSortedMemoList("meeting");
-        if (sortedMemos != null) {
-            for (Memo memo : sortedMemos) {
-                System.out.println("Date: " + memo.getDate());
-                System.out.println("Title: " + memo.getTitle());
-                System.out.println("Message: " + memo.getMessage());
-                System.out.println();
-            }
-        } else {
-            System.out.println("No Memos Found!");
-        }
     }
 
     Date stringToDate(String dateString) {
@@ -123,10 +113,14 @@ public class MemoManager<E extends Comparable> {
         } else {
             return null;
         }
-        Memo[] sortedMemos = new Memo[sortedNodes.length];
-        for (int i = 0; i < sortedNodes.length; i++) {
-            sortedMemos[i] = (Memo) sortedNodes[i].getElement();
+        int nodeCount = sortedNodes.length;
+        Memo[] sortedMemos = new Memo[nodeCount];
+
+        for (int i = 0; i < nodeCount; i++) {
+            Node node = sortedNodes[i];
+            sortedMemos[i] = (Memo) node.getElement();
         }
+
         return sortedMemos;
     }
 
