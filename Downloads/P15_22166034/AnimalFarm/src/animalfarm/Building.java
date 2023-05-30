@@ -1,6 +1,6 @@
 package animalfarm;
 
-abstract class Building {
+public abstract class Building {
 
     public boolean owned;
     protected int buildingCost;

@@ -1,7 +1,7 @@
 
 package animalfarm;
 
-abstract class Animal {
+public abstract class Animal {
 
     String status;
     protected int cost;
