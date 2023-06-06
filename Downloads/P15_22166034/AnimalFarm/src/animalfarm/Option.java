@@ -41,58 +41,58 @@ public class Option extends AnimalList {
             switch (choice) {
                 case 1:
                     Animal chicken = new chicken();
-                    if (chicken.cost > coin) {
+                    if (chicken.getCost() > coin) {
                         System.out.println("You don't have enough coins to buy this animal.\n");
                     } else {
-                        coin -= chicken.cost;
+                        coin -= chicken.getCost();
                         System.out.println("You bought an animal! Your remaining coins:\n " + coin + "\n");
                         animals.add(chicken);
                     }
                     break;
                 case 2:
                     Animal pig = new pig();
-                    if (pig.cost > coin) {
+                    if (pig.getCost() > coin) {
                         System.out.println("You don't have enough coins to buy this animal\n");
                     } else if (pigsty.isOwned() == false) {
                         System.out.println("You don't own pigsty! Build pigsty first to buy pig!");
                     } else {
-                        coin -= pig.cost;
+                        coin -= pig.getCost();
                         System.out.println("You bought an animal! Your remaining coins:\n " + coin + "\n");
                         animals.add(pig);
                     }
                     break;
                 case 3:
                     Animal sheep = new sheep();
-                    if (sheep.cost > coin) {
+                    if (sheep.getCost() > coin) {
                         System.out.println("You don't have enough coins to buy this animal\n");
                     } else if (sheepPen.isOwned() == false) {
                         System.out.println("You don't own sheepPen! Build sheepPen first to buy sheep!");
                     } else {
-                        coin -= sheep.cost;
+                        coin -= sheep.getCost();
                         System.out.println("You bought an animal! Your remaining coins:\n " + coin + "\n");
                         animals.add(sheep);
                     }
                     break;
                 case 4:
                     Animal cattle = new cattle();
-                    if (cattle.cost > coin) {
+                    if (cattle.getCost() > coin) {
                         System.out.println("You don't have enough coins to buy this animal\n");
                     } else if (cattleShed.isOwned() == false) {
                         System.out.println("You don't own cattleShed! Build cattleShed first to buy cattle!");
                     } else {
-                        coin -= cattle.cost;
+                        coin -= cattle.getCost();
                         System.out.println("You bought an animal! Your remaining coins:\n " + coin + "\n");
                         animals.add(cattle);
                     }
                     break;
                 case 5:
                     Animal horse = new horse();
-                    if (horse.cost > coin) {
+                    if (horse.getCost() > coin) {
                         System.out.println("You don't have enough coins to buy this animal\n");
                     } else if (stable.isOwned() == false) {
                         System.out.println("You don't own stable! Build stable first to buy horse!");
                     } else {
-                        coin -= horse.cost;
+                        coin -= horse.getCost();
                         System.out.println("You bought an animal! Your remaining coins:\n " + coin + "\n");
                         animals.add(horse);
                     }
@@ -130,7 +130,7 @@ public class Option extends AnimalList {
                 int choice = scanner.nextInt();
                 if (choice <= animals.size()) {
                     Animal selectedAnimal = animals.get(choice - 1);
-                    if (selectedAnimal.status.equalsIgnoreCase("Full")) {
+                    if (selectedAnimal.getStatus().equalsIgnoreCase("Full")) {
                         System.out.println("This animal is already full!\n");
                     } else {
                         selectedAnimal.feed();
@@ -171,7 +171,7 @@ public class Option extends AnimalList {
                 } else {
                     Animal selectedAnimal = animals.get(choice - 1);
 
-                    if (selectedAnimal.status.equalsIgnoreCase("full")) {
+                    if (selectedAnimal.getStatus().equalsIgnoreCase("full")) {
                         if (selectedAnimal instanceof chicken) {
                             coin += 2;
                         }

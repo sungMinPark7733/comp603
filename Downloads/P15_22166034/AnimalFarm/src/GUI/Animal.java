@@ -1,5 +1,7 @@
 
-package animalfarm;
+package GUI;
+
+import animalfarm.*;
 
 public abstract class Animal {
 

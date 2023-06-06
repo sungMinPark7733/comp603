@@ -1,6 +1,6 @@
 package GUI;
 
-public class Main  {
+public class Main {
 
     public static void main(String[] args) {
         Main main = new Main();
