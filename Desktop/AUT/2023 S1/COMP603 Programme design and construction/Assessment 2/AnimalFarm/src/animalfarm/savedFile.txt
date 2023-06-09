@@ -1,0 +1,5 @@
+Coin number:0
+Pigsty owned: false
+Sheep pen owned: false
+Cattle shed owned: false
+Stable owned: false
