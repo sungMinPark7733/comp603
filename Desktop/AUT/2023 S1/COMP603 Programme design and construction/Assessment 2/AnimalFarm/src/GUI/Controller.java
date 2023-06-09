@@ -126,36 +126,44 @@ public class Controller implements ActionListener {
                 break;
 
             case "1. Pigsty: 10 coins":
-                if (model.getCoin() >= 10) {
+                if (model.getCoin() >= 10 && model.pigsty.owned == false) {
                     model.addPigsty();
                     view.getPigstyownedLabel().setText("Owned: True");
+                } else if (model.pigsty.owned == true) {
+                    view.getWarningLabel2().setText("Already owned");
                 } else {
                     view.getWarningLabel2().setText("No enough coin");
                 }
                 break;
 
             case "2. Sheep pen: 10 coins":
-                if (model.getCoin() >= 10) {
+                if (model.getCoin() >= 10 && model.sheepPen.owned == false) {
                     model.addSheeppen();
                     view.getSheeppenOwnedLabel().setText("owend: True");
+                } else if (model.sheepPen.owned == true) {
+                    view.getWarningLabel2().setText("Already owned");
                 } else {
                     view.getWarningLabel2().setText("No enough coin");
                 }
 
                 break;
             case "3. Cattle shed: 20 coins":
-                if (model.getCoin() >= 20) {
+                if (model.getCoin() >= 20 && model.cattleShed.owned == false) {
                     model.addCattleshed();
                     view.getCattleshedOwnedLabel().setText("Owend: True");
+                } else if (model.cattleShed.owned == true) {
+                    view.getWarningLabel2().setText("Already owned");
                 } else {
                     view.getWarningLabel2().setText("No enough coin");
                 }
 
                 break;
             case "4. Stable: 20 coins":
-                if (model.getCoin() >= 20) {
+                if (model.getCoin() >= 20 && model.stable.owned == false) {
                     model.addStable();
                     view.getStableOwnedLabel().setText("Owned: True");
+                } else if (model.stable.owned == true) {
+                    view.getWarningLabel2().setText("Already owned");
                 } else {
                     view.getWarningLabel2().setText("No enough coin");
                 }
@@ -254,7 +262,7 @@ public class Controller implements ActionListener {
                         break;
                     }
                 }
-                if (model.getHungryCattleNumber()>= 1) {
+                if (model.getHungryCattleNumber() >= 1) {
                     if (containsCattle) {
                         model.addFullCattle();
                         view.getFullcattleNumberLabel().setText("Full cattle: " + model.getFullCattleNumber());
